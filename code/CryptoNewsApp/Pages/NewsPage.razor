@@ -1,0 +1,42 @@
+﻿@page "/news"
+@using MongoDB.Driver
+@using CryptoNewsApp.Data
+@using MongoDB.Bson
+
+<PageTitle>News</PageTitle>
+
+<h1>News</h1>
+
+@if (_news != null)
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>News</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var newsEntry in _news)
+        {
+            <tr>
+                <td>@newsEntry.Title</td>
+                <td>@newsEntry.Date</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<News>? _news;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var mongoClient = new MongoClient("mongodb+srv://dbuser:dbUserPassword@cluster0.pl7egwa.mongodb.net/?retryWrites=true&w=majority");
+        var cryptoNewsDatabase = mongoClient.GetDatabase("crypto-news-database");
+        var newsCollection = cryptoNewsDatabase.GetCollection<News>("news");
+        _news = await newsCollection.Find(new BsonDocument()).ToListAsync();
+    }
+
+}
