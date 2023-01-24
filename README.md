@@ -1,20 +1,27 @@
 # Building a Crypto News Website using the Microsoft Azure App Service and MongoDB Atlas
 
-Who said creating a website has to be hard? Writing the code, persisting news, hosting the website.
-A decade ago this might have been a lot of work. These days, thanks to
-[Microsoft Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor),
+Who said creating a website has to be hard?
+
+Writing the code, persisting news, hosting the website.
+A decade ago this might have been a lot of work.
+These days, thanks to [Microsoft Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor),
 [Microsoft Azure App Service](https://azure.microsoft.com/en-us/products/app-service/#overview)
 and [MongoDB Atlas](https://www.mongodb.com/atlas/database) you can get started in minutes.
+And finish it equally fast!
 
-In this tutorial I will walk your through setting up a new Blazor project, creating a new page with a simple UI,
-creating data in Atlas, showing those news on the website and making the website available by using Azure App Service
-to host it.
+In this tutorial I will walk you through:
 
-Everything you need will be in this tutorial but if you prefer to just read along for now, check out the [GitHub
-repository for this tutorial](https://github.com/mongodb-developer/crypto-news-website) where you can find the code
-and the tutorial.
+* setting up a new Blazor project,
+* creating a new page with a simple UI,
+* creating data in Atlas,
+* showing those news on the website and
+* making the website available by using Azure App Service to host it.
 
-## Prerequisites for this tutorial
+All you need is this tutorial and the following pre-requisites, but if you prefer to just read along for now,
+check out the [GitHub repository for this tutorial](https://github.com/mongodb-developer/crypto-news-website)
+where you can find the code and the tutorial.
+
+## Pre-requisites for this tutorial
 
 Before we get started, here is a list of everything you need while working through the tutorial.
 I recommend getting everything set up first so that you can seamlessly follow along.
@@ -22,7 +29,7 @@ I recommend getting everything set up first so that you can seamlessly follow al
 * [Download and install the .NET framework](https://dotnet.microsoft.com/en-us/download).
   For this tutorial I am using .NET 7.0.102 for Windows but any .NET 6.0 or higher should do.
 * [Download and install Visual Studio](https://visualstudio.microsoft.com/downloads/).
-  I am using the 2022 Community edition, version 17.4.4 here but any 2019 or 2022 edition will be ok.
+  I am using the 2022 Community edition, version 17.4.4, but any 2019 or 2022 edition will be ok.
   Make sure to install the `Azure development` workload as we will be deploying with this later.
   If you already have an installed version of Visual Studio, go into the Installer and click `modify` to find it.
 * [Sign up for a free Microsoft Azure account](https://azure.microsoft.com/en-us/free/).
@@ -48,9 +55,9 @@ I like to have the solution and project in the same directory but you don't have
 
 Choose your currently installed .NET framework (as described in `Pre-requisites`) and leave the rest on default.
 
-![04_additional_information.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/04_additional_information_47949f55f7.jpg)
+Hit `Create` and you are good to go!
 
-Hit `Create` and your good to go!
+![04_additional_information.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/04_additional_information_47949f55f7.jpg)
 
 ## Adding the MongoDB Driver to the project to connect to the database
 
@@ -74,9 +81,10 @@ with those libraries.
 
 ## Creating a new MongoDB Atlas cluster and database to host our Crypto News
 
-Now that we've installed the Driver, let's go ahead and create a cluster and database to connect to.
+Now that we've installed the driver, let's go ahead and create a cluster and database to connect to.
 
 When you register a new account you will be presented with the selection of a cloud database to deploy.
+Open the `Advanced Configuration Options`.
 For this tutorial we only need the forever-free shared tier. Choose Azure in the list of cloud providers and a
 region of your liking.
 Remember that choice so you can later on deploy your website to the same region on Azure.
@@ -110,7 +118,7 @@ If you've never worked with Atlas before, here are some vocabularies to get your
 
 ## Creating some test data in Atlas
 
-Since there is no data yet, you will see and empty list of databases and collections.
+Since there is no data yet, you will see an empty list of databases and collections.
 Click on `Add My Own Data` to add the first entry.
 
 ![15_collections.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/15_collections_601bf59508.jpg)
@@ -126,20 +134,20 @@ This should lead to a new entry that looks like this:
 
 Next, click on `INSERT DOCUMENT`.
 
-There are a couple things going on in the above. The `_id` has already been created automatically.
+There are a couple things going on here. The `_id` has already been created automatically.
 Each document contains one of those and they are of type `ObjectId`. It uniquely identifies the document.
 
 By hovering over the line count on the left, you'll get a pop-op to add more fields.
-Add one called `title` and set it's value to whatever you like, the above is an example you can use.
+Add one called `title` and set its value to whatever you like, the screenshot shows an example you can use.
 Choose `String` as the type on the right.
 Next, add a `date` and choose `Date` as the type on the right.
 
 ![18_insert_document.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/18_insert_document_c7ce90362e.jpg)
 
 Repeat the above process a couple times to get as much example data in there as you like.
-You may also just continue with one entry though if you like.
+You may also just continue with one entry though if you like and fill up your news when you are done.
 
-## Connecting to Atlas via the Data API
+## Creating a connection string to access your MongoDB Atlas cluster
 
 The final step within MongoDB Atlas is to actually create access to this database so that the MongoDB Driver we
 installed into the project can connect to it.
@@ -150,7 +158,7 @@ to connect to.
 Click on `Databases` on the left to get back to the cluster overview.
 
 This time, hit the `Connect` button and then `Connect Your Application`.
-If you haven't done so before, choose a username and password the database user accessing this cluster during the
+If you haven't done so before, choose a username and password for the database user accessing this cluster during the
 tutorial.
 Also, add `0.0.0.0/0` as the IP address so that the Azure deployment can access the cluster later on.
 
@@ -260,25 +268,29 @@ namespace CryptoNewsApp.Data
 {
     public class News
     {
-		// The attribute `BsonId` signals the MongoDB driver that this field 
-		// should used to map the `_id` from the Atlas document.
-		// Remember to use the type `ObjectId` here as well.
+        // The attribute `BsonId` signals the MongoDB driver that this field 
+        // should used to map the `_id` from the Atlas document.
+        // Remember to use the type `ObjectId` here as well.
         [BsonId] public ObjectId Id { get; set; }
 
-		// The two other fields in each news are `title` and `date`.
-		// Since the C# coding style differs from the Atlas naming style, we have to map them.
-		// Thankfully there is another handy attribute to achieve this: `BsonElement`.
-		// It takes the document field's name and maps it to the classes field name.
+        // The two other fields in each news are `title` and `date`.
+        // Since the C# coding style differs from the Atlas naming style, we have to map them.
+        // Thankfully there is another handy attribute to achieve this: `BsonElement`.
+        // It takes the document field's name and maps it to the classes field name.
         [BsonElement("title")] public String Title { get; set; }
         [BsonElement("date")] public DateTime Date { get; set; }
     }
 }
 ```
 
-Now it's time to look at the results. Hit `Run` again.
+Now it's time to look at the result. Hit `Run` again.
+
 The website should open automatically, just add `/news` to the URL to see your new News page.
 
 ![20_news_website.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/20_news_website_4689c26e69.jpg)
+
+If you want to learn more about how to add the news page to the menu on the left, you can have a look at another
+of my more [Blazor specific tutorials](https://www.mongodb.com/developer/languages/csharp/microsoft-blazor-tutorial/).
 
 ## Deploying the website to Azure App Service
 
@@ -288,7 +300,7 @@ And Visual Studio makes this super easy. Just click onto your project and choose
 
 ![21_solution_explorer_publish.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/21_solution_explorer_publish_c9335f7064.jpg)
 
-The target is `Azure`, the `Specific target` is `Azure App Service (Windows)`.
+The `Target` is `Azure`, the `Specific target` is `Azure App Service (Windows)`.
 
 ![22_publishing_target.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/22_publishing_target_f962875974.jpg)
 ![23_publishing_service.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/23_publishing_service_73e456e549.jpg)
@@ -312,6 +324,7 @@ It eventually shows the result of the publish.
 
 The above summary will also show you the URL which was created for the deployment.
 My example: https://cryptonewsapp20230124021236.azurewebsites.net/
+
 Again, add `/news` to it to get to the News page.
 
 ![29_published_website.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/29_published_website_eee29476a0.jpg)
@@ -319,11 +332,13 @@ Again, add `/news` to it to get to the News page.
 ## What's next?
 
 Go ahead and add some more data. Add more fields or style the website a bit more than this default table.
+
 The combination of using [Microsoft Azure](https://azure.microsoft.com/en-us/free/) and
 [MongoDB Atlas](https://account.mongodb.com/account/register) makes it super easy and fast to create
 websites like this one. But it is only the start.
 You can learn more about Azure on the [Learn platform](https://learn.microsoft.com/en-us/training/) and
 about Atlas on the [MongoDB University](https://learn.mongodb.com/).
+
 And if you have any questions, please reach out to us at the
 [MongoDB Forums](https://www.mongodb.com/community/forums/) or tweet [@dominicfrei](https://twitter.com/dominicfrei).
 
