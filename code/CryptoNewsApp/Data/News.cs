@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices.JavaScript;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace CryptoNewsApp.Data
