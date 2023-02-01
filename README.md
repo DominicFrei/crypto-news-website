@@ -101,6 +101,14 @@ Choose a `Username` and `Password` for the database user that will access this c
 For the `Access List` we need add `0.0.0.0/0` since we do not know the IP address of our Azure deployment yet.
 This is ok for development purposes and testing but in production you should restrict the access to the specific IPs
 accessing Atlas.
+
+Atlas also supports the use
+of [network peering and private connections](https://www.mongodb.com/docs/atlas/setup-cluster-security/#optional-security-features)
+using the major cloud providers.
+This includes [Azure Private Link](https://learn.microsoft.com/azure/private-link/private-link-overview)
+or [Azure Virtual Private Connection](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)
+(VPC) if you are using an M10 or above cluster.
+
 Now hit `Finish and Close`.
 
 Creating a new shared cluster happens very, very fast and you should be able to start within minutes.
