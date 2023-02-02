@@ -126,7 +126,9 @@ If you've never worked with Atlas before, here are some vocabularies to get your
 - A cluster can contain multiple databases (which are replicated onto all nodes).
 - Each database can contain many collections, which are similar to tables in a relational database.
 - Each collection can then contain many documents. Think rows, just better!
-  Documents are super flexible, easy to read and easy to work with JSON-like structures that contain our data.
+- [Documents](https://www.mongodb.com/document-databases) are super-flexible because each document can have its own set
+  of properties.
+  They are easy to read and super flexible to work with JSON-like structures that contain our data.
 
 ## Creating some test data in Atlas
 
