@@ -176,7 +176,8 @@ If you haven't done so before, choose a username and password for the database u
 tutorial.
 Also, add `0.0.0.0/0` as the IP address so that the Azure deployment can access the cluster later on.
 
-Copy the `connection string` that's shown in the pop-up.
+Copy the [connection string](https://www.mongodb.com/docs/manual/reference/connection-string/) that is shown in the
+pop-up.
 
 ![Retrieving the connection string for the cluster.](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/19_connection_string_cb44991831.jpg)
 
