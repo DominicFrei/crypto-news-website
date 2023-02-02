@@ -39,25 +39,25 @@ I recommend getting everything set up first so that you can seamlessly follow al
 
 Now that the pre-requisites are out of the way, let's start by creating a new project.
 
-![01_get_started.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/01_get_started_88f36b9147.jpg "Visual Studio Get started screen")
+![Visual Studio Get started screen](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/01_get_started_88f36b9147.jpg)
 
 I have recently discovered [Microsoft Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor) and I
 absolutely love it.
 Such an easy way to create websites quickly and easily. And you don't even have to write any JavaScript or PHP!
 Let's use is for this tutorial as well. Search for `Blazor Server App` and click `Next`.
 
-![02_create_a_new_project.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/02_create_a_new_project_53da789c4c.jpg "Project template list in Visual Studio")
+![Project template list in Visual Studio](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/02_create_a_new_project_53da789c4c.jpg)
 
 Choose a `Project name` and `Location` of you liking.
 I like to have the solution and project in the same directory but you don't have to.
 
-![03_configure_your_new_project.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/03_configure_your_new_project_baec3276cd.jpg "Project Configuration screen in Visual Studio")
+![Project Configuration screen in Visual Studio](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/03_configure_your_new_project_baec3276cd.jpg)
 
 Choose your currently installed .NET framework (as described in `Pre-requisites`) and leave the rest on default.
 
 Hit `Create` and you are good to go!
 
-![04_additional_information.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/04_additional_information_47949f55f7.jpg "Additional information for the project")
+![Additional information for the project](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/04_additional_information_47949f55f7.jpg)
 
 ## Adding the MongoDB Driver to the project to connect to the database
 
@@ -67,17 +67,17 @@ The Driver is a library that let's you easily access
 your [MongoDB Atlas cluster](https://www.mongodb.com/basics/clusters) and work with your database.
 Click on `Project` -> `Manage NuGet Packages...` and search for `MongoDB.Driver`.
 
-![07_manage_nuget_packages.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/07_manage_nuget_packages_664b480003.jpg "File Menu in Visual Studio")
+![File Menu in Visual Studio](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/07_manage_nuget_packages_664b480003.jpg)
 
 During that process you might have to install additional components like the ones shown in the following screenshot.
 Confirm this installation as we will need some of those as well.
 
-![08_install_additional_components.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/08_install_additional_components_d8a428df2c.jpg "Preview of the packages that are about to be installed.")
+![Preview of the packages that are about to be installed.](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/08_install_additional_components_d8a428df2c.jpg)
 
 Another message you come across might be the following license agreements which you need to accept to be able to work
 with those libraries.
 
-![09_accept_licenses.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/09_accept_licenses_21361afe2d.jpg "Licenses for the libraries that are about to be installed.")
+![Licenses for the libraries that are about to be installed.](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/09_accept_licenses_21361afe2d.jpg)
 
 ## Creating a new MongoDB Atlas cluster and database to host our Crypto News
 
@@ -92,12 +92,12 @@ much as possible.
 Here you can choose any region, just make sure to chose the same one later on when deploying the website to Azure.
 The remaining options can be left on their defaults.
 
-![12_deploy_a_cloud_database.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/12_deploy_a_cloud_database_b499ce0e74.jpg "Cluster chooser for MongoDB Atlas")
-![13_create_a_shared_cluster.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/13_create_a_shared_cluster_8cdc5c9896.jpg "Advanced options for creating a MongoDB Atlas cluster")
+![Cluster chooser for MongoDB Atlas](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/12_deploy_a_cloud_database_b499ce0e74.jpg)
+![Advanced options for creating a MongoDB Atlas cluster](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/13_create_a_shared_cluster_8cdc5c9896.jpg)
 
 The final step of creating a new cluster is to think about security measures by going through the `Security Quickstart`.
 
-![30_security_quick_start.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/30_security_quick_start_d92b651359.jpg "Security Quickstart for the MongoDB Atlas cluster creation")
+![Security Quickstart for the MongoDB Atlas cluster creation](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/30_security_quick_start_d92b651359.jpg)
 
 Choose a `Username` and `Password` for the database user that will access this cluster during the tutorial.
 For the `Access List` we need add `0.0.0.0/0` since we do not know the IP address of our Azure deployment yet.
@@ -118,7 +118,7 @@ As soon as the cluster is created you'll see it in your list of `Database Deploy
 
 Let's add some sample data for our website! Click on `Browse Collections` now.
 
-![14_your_new_cluster](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/14_your_new_cluster_021c528d9d.jpg "Atlas Data Services Overview")
+![Atlas Data Services Overview](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/14_your_new_cluster_021c528d9d.jpg)
 
 If you've never worked with Atlas before, here are some vocabularies to get your started:
 
@@ -133,16 +133,16 @@ If you've never worked with Atlas before, here are some vocabularies to get your
 Since there is no data yet, you will see an empty list of databases and collections.
 Click on `Add My Own Data` to add the first entry.
 
-![15_collections.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/15_collections_601bf59508.jpg "Collections overview for your Atlas cluster")
+![Collections overview for your Atlas cluster](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/15_collections_601bf59508.jpg)
 
 The database name and collection name can be anything but to be in line with the code we'll see later,
 call them `crypto-news-website` and `news` respectively and hit `Create`.
 
-![16_create_database.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/16_create_database_afa2bb61d2.jpg "Create Database pop-up")
+![Create Database pop-up](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/16_create_database_afa2bb61d2.jpg)
 
 This should lead to a new entry that looks like this:
 
-![17_your_new_collection.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/17_your_new_collection_25096bc341.jpg "Newly created database and collection.")
+![Newly created database and collection.](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/17_your_new_collection_25096bc341.jpg)
 
 Next, click on `INSERT DOCUMENT`.
 
@@ -154,7 +154,7 @@ Add one called `title` and set its value to whatever you like, the screenshot sh
 Choose `String` as the type on the right.
 Next, add a `date` and choose `Date` as the type on the right.
 
-![18_insert_document.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/18_insert_document_c7ce90362e.jpg "Inserting a new document into the collection.")
+![Inserting a new document into the collection.](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/18_insert_document_c7ce90362e.jpg)
 
 Repeat the above process a couple times to get as much example data in there as you like.
 You may also just continue with one entry though if you like and fill up your news when you are done.
@@ -176,7 +176,7 @@ Also, add `0.0.0.0/0` as the IP address so that the Azure deployment can access 
 
 Copy the `connection string` that's shown in the pop-up.
 
-![19_connection_string.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/19_connection_string_cb44991831.jpg "Retrieving the connection string for the cluster.")
+![Retrieving the connection string for the cluster.](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/19_connection_string_cb44991831.jpg)
 
 ## Creating a new Blazor page
 
@@ -186,8 +186,8 @@ It's a great start and we will be re-using same parts of it later on.
 Let's add our own page first though. In your Solution Explorer you'll see a `Pages` folder.
 Right-click it and add a `Razor Component`. Those are files that combine the HTML of your page with C# code.
 
-![05_add_a_new_component.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/05_add_a_new_component_6476440c47.jpg "Context menu for creating a new Razor Component")
-![06_name_the_new_component.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/06_name_the_new_component_8ecc33dea7.jpg "Choosing a type and name for the new component.")
+![Context menu for creating a new Razor Component](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/05_add_a_new_component_6476440c47.jpg)
+![Choosing a type and name for the new component.](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/06_name_the_new_component_8ecc33dea7.jpg)
 
 Now, replace the content of the file with the following code. Explanations can be read inline in the code comments.
 
@@ -300,7 +300,7 @@ Now it's time to look at the result. Hit `Run` again.
 
 The website should open automatically, just add `/news` to the URL to see your new News page.
 
-![20_news_website.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/20_news_website_4689c26e69.jpg "Local Website showing news")
+![Local Website showing news](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/20_news_website_4689c26e69.jpg)
 
 If you want to learn more about how to add the news page to the menu on the left, you can have a look at another
 of my more [Blazor specific tutorials](https://www.mongodb.com/developer/languages/csharp/microsoft-blazor-tutorial/).
@@ -311,36 +311,36 @@ So far so good. Everything is running locally. Now to the fun part, going live!
 
 And Visual Studio makes this super easy. Just click onto your project and choose `Publish...`.
 
-![21_solution_explorer_publish.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/21_solution_explorer_publish_c9335f7064.jpg "Context menu to publish the app")
+![Context menu to publish the app](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/21_solution_explorer_publish_c9335f7064.jpg)
 
 The `Target` is `Azure`, the `Specific target` is `Azure App Service (Windows)`.
 
-![22_publishing_target.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/22_publishing_target_f962875974.jpg "Choosing a publishing target")
-![23_publishing_service.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/23_publishing_service_73e456e549.jpg "Choosing a specific target")
+![Choosing a publishing target](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/22_publishing_target_f962875974.jpg)
+![Choosing a specific target](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/23_publishing_service_73e456e549.jpg)
 
 When you registered for Azure earlier, a free subscription should have already been created and chosen here.
 By clicking on `Create new` on the right you can now create a new App Service.
 
-![24_create_new_app_service.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/24_create_new_app_service_a652f6f1c9.jpg "Creating a new App Service")
+![Creating a new App Service](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/24_create_new_app_service_a652f6f1c9.jpg)
 
 The default settings are all totally fine. You can however choose a different region here if you want to.
 Finally, click `Create` and then `Finish`.
 
-![25_app_service_settings.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/25_app_service_settings_b1a05f9379.jpg "App Service settings")
-![26_finish_service_creation.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/26_finish_service_creation_4b118a8f84.jpg "Final overview before publishing the new app")
+![App Service settings](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/25_app_service_settings_b1a05f9379.jpg)
+![Final overview before publishing the new app](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/26_finish_service_creation_4b118a8f84.jpg)
 
 When ready, the following pop-up should appear and by clicking `Publish` you can start the actual publishing process.
 It eventually shows the result of the publish.
 
-![27_publish_summary.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/27_publish_summary_fdc1933648.jpg "Publishing summary")
-![28_publish_succeeded.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/28_publish_succeeded_0b3b26a2b3.jpg "Publishing result")
+![Publishing summary](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/27_publish_summary_fdc1933648.jpg)
+![Publishing result](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/28_publish_succeeded_0b3b26a2b3.jpg)
 
 The above summary will also show you the URL which was created for the deployment.
 My example: https://cryptonewsapp20230124021236.azurewebsites.net/
 
 Again, add `/news` to it to get to the News page.
 
-![29_published_website.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/29_published_website_eee29476a0.jpg "News website deployed on Azure App Service")
+![News website deployed on Azure App Service](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/29_published_website_eee29476a0.jpg)
 
 ## What's next?
 
