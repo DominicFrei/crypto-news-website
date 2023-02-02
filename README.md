@@ -85,9 +85,11 @@ Now that we've installed the driver, let's go ahead and create a cluster and dat
 
 When you register a new account you will be presented with the selection of a cloud database to deploy.
 Open the `Advanced Configuration Options`.
-For this tutorial we only need the forever-free shared tier. Choose Azure in the list of cloud providers and a
-region of your liking.
-Remember that choice so you can later on deploy your website to the same region on Azure.
+For this tutorial we only need the forever-free shared tier.
+Since the website will later be deployed to Azure, we also want the Atlas cluster deployed in Azure.
+And we also want both to reside in the same region. This way we decrease the chance of having an additional latency as
+much as possible.
+Here you can choose any region, just make sure to chose the same one later on when deploying the website to Azure.
 The remaining options can be left on their defaults.
 
 ![12_deploy_a_cloud_database.jpg](https://mongodb-devhub-cms.s3.us-west-1.amazonaws.com/12_deploy_a_cloud_database_b499ce0e74.jpg "Cluster chooser for MongoDB Atlas")
