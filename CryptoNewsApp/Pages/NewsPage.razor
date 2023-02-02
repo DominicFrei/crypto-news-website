@@ -7,6 +7,7 @@
 @using MongoDB.Bson
 @* You need to add the `Data` folder as well. This is where the `News` class resides. *@
 @using CryptoNewsApp.Data
+@using Microsoft.AspNetCore.Builder
 
 @* The page title is what your browser tab will be called.  *@
 <PageTitle>News</PageTitle>
@@ -53,10 +54,8 @@
         // First, we need to create a `MongoClient` which is what we use to
         // connect to our cluster.
         // The only argument we need to pass on is the connection string you
-        // retrieved from Atlas. Make sure to substitute the password with
-        // the actual password.
-        var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
-        var mongoClient = new MongoClient(connectionString);
+        // retrieved from Atlas. Make sure to replace the password placeholder with your password.
+        var mongoClient = new MongoClient("YOUR_CONNECTION_STRING");
         // Using the `mongoCLient` we can now access the database.
         var cryptoNewsDatabase = mongoClient.GetDatabase("crypto-news-database");
         // Having a handle to the database we can furthermore get the collection data.
@@ -68,7 +67,7 @@
         // Remember, `BSON` is really just a (binary) JSON.
         // Since we don't want to filter anything and get all the news, we pass along an
         // empty / new `BsonDocument`. The result is then transformed into a list with `ToListAsync()`.
-        _news = await newsCollection.Find(new BsonDocument()).ToListAsync();
+        _news = await newsCollection.Find(new BsonDocument()).Limit(10).ToListAsync();
         // And that's it! It's as easy as that using the driver to access the data
         // in your MongoDB Atlas cluster.
     }
