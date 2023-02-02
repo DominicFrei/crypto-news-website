@@ -1,21 +1,22 @@
-﻿// The `page` attribute defines how this page can be opened.
+﻿@* The `page` attribute defines how this page can be opened. *@
 @page "/news"
 
-// The `MongoDB` driver will be used to connect to your Atlas cluster.
+@* The `MongoDB` driver will be used to connect to your Atlas cluster. *@
 @using MongoDB.Driver
-// `BSON` is a file format similar to JSON. MongoDB Atlas documents are BSON documents.
+@* `BSON` is a file format similar to JSON. MongoDB Atlas documents are BSON documents. *@
 @using MongoDB.Bson
-// You need to add the `Data` folder as well. This is where the `News` class resides.
+@* You need to add the `Data` folder as well. This is where the `News` class resides. *@
 @using CryptoNewsApp.Data
+@using Microsoft.AspNetCore.Builder
 
-// The page title is what your browser tab will be called. 
+@* The page title is what your browser tab will be called.  *@
 <PageTitle>News</PageTitle>
 
-// Let's add a header to the page.
+@* Let's add a header to the page. *@
 <h1>News</h1>
 
-// And then some data.
-// This is just a simple table contains news and their date.
+@* And then some data. *@
+@* This is just a simple table contains news and their date. *@
 @if (_news != null)
 {
     <table class="table">
@@ -26,7 +27,7 @@
         </tr>
         </thead>
         <tbody>
-        // Blazor takes this data from the `_news` field that we will fill later on.
+        @* Blazor takes this data from the `_news` field that we will fill later on. *@
         @foreach (var newsEntry in _news)
         {
             <tr>
@@ -38,8 +39,8 @@
     </table>
 }
 
-// This part defines the code that will be run when the page is loaded. It's basically 
-// what would usually be PHP in a non-Blazor environment.
+@* This part defines the code that will be run when the page is loaded. It's basically  *@
+@* what would usually be PHP in a non-Blazor environment. *@
 @code {
     
     // The `_news` field will hold all our news. We will have a look at the `News`
@@ -53,13 +54,12 @@
         // First, we need to create a `MongoClient` which is what we use to
         // connect to our cluster.
         // The only argument we need to pass on is the connection string you
-        // retrieved from Atlas. Make sure to substitute the password with
-        // the actual password.
-        var mongoClient = new MongoClient("mongodb+srv://dbuser:dbUserPassword@cluster0.pl7egwa.mongodb.net/?retryWrites=true&w=majority");
+        // retrieved from Atlas. Make sure to replace the password placeholder with your password.
+        var mongoClient = new MongoClient("YOUR_CONNECTION_STRING");
         // Using the `mongoCLient` we can now access the database.
         var cryptoNewsDatabase = mongoClient.GetDatabase("crypto-news-database");
         // Having a handle to the database we can furthermore get the collection data.
-        // Note that this is a generic function that takes `News` as it's paramter
+        // Note that this is a generic function that takes `News` as it's parameter
         // to define who the documents in this collection look like.
         var newsCollection = cryptoNewsDatabase.GetCollection<News>("news");
         // Having access to the collection, we issue a `Find` call to find all documents.
@@ -67,7 +67,7 @@
         // Remember, `BSON` is really just a (binary) JSON.
         // Since we don't want to filter anything and get all the news, we pass along an
         // empty / new `BsonDocument`. The result is then transformed into a list with `ToListAsync()`.
-        _news = await newsCollection.Find(new BsonDocument()).ToListAsync();
+        _news = await newsCollection.Find(new BsonDocument()).Limit(10).ToListAsync();
         // And that's it! It's as easy as that using the driver to access the data
         // in your MongoDB Atlas cluster.
     }
